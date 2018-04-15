@@ -1,0 +1,7 @@
+<h1>Hello World!</h1>
+<% if(usersls!==null){ %>
+    <%= usersls.length %>
+    <% usersls.forEach(function(users){ %>
+        <li><%= users.id %> | <%= users.info %></li>
+    <% }) %>
+<% } %>
