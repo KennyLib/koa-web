@@ -6,7 +6,8 @@ const http = require('http'),
     bodyparser = require('koa-bodyparser'),
     render = require('koa-ejs'),
     app = new Koa(),
-    _routes = require('./config/router.js');
+    _routes = require('./config/routes').routes,
+    router = require('./middleware/router')(_routes)
 /**
  * 设置模板
  */
@@ -28,7 +29,7 @@ render(app, {
  * 配置路由
  */
 // _routes(router);
-app.use(_routes.routes()).use(_routes.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods());
 /**
  * 静态文件访问
  */
