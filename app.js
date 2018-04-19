@@ -5,6 +5,8 @@ const http = require('http'),
     static = require('koa-static'),
     bodyparser = require('koa-bodyparser'),
     render = require('koa-ejs'),
+    session = require('koa-session'),
+    passpoprt = require('koa-passport'),
     app = new Koa(),
     _routes = require('./config/routes').routes,
     router = require('./middleware/router')(_routes)
@@ -18,12 +20,11 @@ render(app, {
     cache: false,
     debug: true
 });
-// app.use(bodyparser());
-// app.use(ctx => {
-//     // the parsed body will store in ctx.request.body 
-//     // if nothing was parsed, body will be an empty object {} 
-//     ctx.body = ctx.request.body;
-// });
+/**
+ * 引入koa-bodyparser 中间件
+ */
+app.use(bodyparser());
+
 
 /**
  * 配置路由

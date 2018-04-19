@@ -11,7 +11,7 @@ const _ = {
     },
     login_post: async (ctx, next) => {
 
-        console.log(ctx.body);
+        console.log(ctx.request.body);
         ctx.redirect('/');
     }
 };
