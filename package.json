@@ -1,11 +1,17 @@
 {
   "dependencies": {
+    "http-request": "^0.7.0",
+    "iconv": "^2.3.0",
+    "iconv-lite": "^0.4.21",
     "is-generator-function": "^1.0.7",
     "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
     "koa-ejs": "^4.1.1",
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.2",
+    "koa2-request": "^1.0.4",
     "node-pre-gyp": "^0.9.1",
+    "querystring": "^0.2.0",
     "sqlite3": "^4.0.0"
   }
 }

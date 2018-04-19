@@ -3,6 +3,7 @@ const http = require('http'),
     path = require('path'),
     Koa = require('koa'),
     static = require('koa-static'),
+    bodyparser = require('koa-bodyparser'),
     render = require('koa-ejs'),
     app = new Koa(),
     _routes = require('./config/router.js');
@@ -16,6 +17,13 @@ render(app, {
     cache: false,
     debug: true
 });
+// app.use(bodyparser());
+// app.use(ctx => {
+//     // the parsed body will store in ctx.request.body 
+//     // if nothing was parsed, body will be an empty object {} 
+//     ctx.body = ctx.request.body;
+// });
+
 /**
  * 配置路由
  */
