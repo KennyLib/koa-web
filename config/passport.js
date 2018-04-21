@@ -11,13 +11,13 @@ passport.serializeUser(function(user, done) {
 // 反序列化（请求时，session中存在"passport":{"user":"1"}触发）
 passport.deserializeUser(async function(id, done) {
   console.log('deserializeUser: ', id)
-  var user = {id: 1, username: 'admin', password: '123456'}
+  var user = {id: 1, account: 'test', password: 'test'}
   done(null, user)
 })
 // 提交数据(策略)
 passport.use(new LocalStrategy({
-  // usernameField: 'email',
-  // passwordField: 'passwd'
+  usernameField: 'account',
+  passwordField: 'password'
 }, function(username, password, done) {
   console.log('LocalStrategy', username, password)
   var user = {id: 1, username: username, password: password}

@@ -1,4 +1,5 @@
 const router = require('koa-router')();
+const passport = require('../config/passport');
 const _ = {
     login_get: async (ctx, next) => {
         ctx.state = {
@@ -9,14 +10,10 @@ const _ = {
 
         await ctx.render('login', viewobj);
     },
-    login_post: async (ctx, next) => {
-
-        return passport.authenticate('local',
-            function (err, user, info, status) {
-                ctx.body = { user, err, info, status }
-                return ctx.login({ id: 1, username: 'admin', password: '123456' })
-            })(ctx)
-    }
+    login_post: passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/login'
+    })
 };
 
 module.exports = _;
