@@ -1,4 +1,6 @@
 const usersdao = require('../dao/usersdao');
+const account = require('../model/account').Account
+
 const _home = async (ctx, next) => {
     ctx.state = {
         session: ctx.session,
@@ -6,9 +8,12 @@ const _home = async (ctx, next) => {
     };
 
     const viewobj = {};
-    usersdao(function (err, rows) {
+    usersdao.sqliteSearch(function (err, rows) {
         viewobj.usersls = rows;
     });
+    let accArr = await account.findAll()
+
+    console.log(accArr)
     await next();
 
     console.info(viewobj);
