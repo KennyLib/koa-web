@@ -6,10 +6,18 @@ const http = require('http'),
     bodyparser = require('koa-bodyparser'),
     render = require('koa-ejs'),
     session = require('koa-session'),
-    passpoprt = require('koa-passport'),
+    passport = require('./config/passport'),
     app = new Koa(),
     _routes = require('./config/routes').routes,
     router = require('./middleware/router')(_routes)
+
+// 基础中间件
+app.use(async (ctx, next) => {
+    const start = Date.now()
+    await next()
+    const ms = Date.now() - start
+    console.log(`${ctx.method} ${ctx.status} ${ctx.url} - ${ms} ms`)
+})
 /**
  * 设置模板
  */
@@ -20,11 +28,17 @@ render(app, {
     cache: false,
     debug: true
 });
+
+app.keys = ['521314']
+
 /**
  * 引入koa-bodyparser 中间件
  */
 app.use(bodyparser());
+app.use(session({}, app))
 
+app.use(passport.initialize())
+app.use(passport.session())
 
 /**
  * 配置路由

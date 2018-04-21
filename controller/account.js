@@ -11,8 +11,11 @@ const _ = {
     },
     login_post: async (ctx, next) => {
 
-        console.log(ctx.request.body);
-        ctx.redirect('/');
+        return passport.authenticate('local',
+            function (err, user, info, status) {
+                ctx.body = { user, err, info, status }
+                return ctx.login({ id: 1, username: 'admin', password: '123456' })
+            })(ctx)
     }
 };
 
