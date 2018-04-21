@@ -8,7 +8,7 @@ const _home = async (ctx, next) => {
 
     const viewobj = {};
     
-    viewobj.usersls = await account.findAll()
+    viewobj.usersls = await account.Account.findAll()
 
     await next();
 

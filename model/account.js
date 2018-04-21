@@ -6,6 +6,9 @@ const Account = sequelize().define('account', {
     account: {
         type: Sequelize.STRING
     },
+    email: {
+        type: Sequelize.STRING
+    },
     password: {
         type: Sequelize.STRING
     },
@@ -19,8 +22,12 @@ Account.sync({ force: true }).then(() => {
     // 表已创建
     return Account.create({
         account: 'Administrator',
+        email: '614044401@qq.com',
         password: 'Xx521314',
         identity: uuidv1()
     });
 });
-module.exports.Account = Account
+module.exports.Account = {
+    Op: Sequelize.Op,
+    Account: Account
+}

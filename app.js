@@ -22,7 +22,8 @@ app.use(async (ctx, next) => {
  * 设置模板
  */
 render(app, {
-    root: path.join(__dirname, 'views'),
+    // root: path.join(__dirname, 'views'),
+    root: path.join(__dirname, 'views/cpts_759_bhr'),
     layout: '_layout',
     viewExt: 'ejs',
     cache: false,
@@ -49,7 +50,7 @@ app.use(router.routes()).use(router.allowedMethods());
 /**
  * 静态文件访问
  */
-app.use(static(path.join(__dirname, '/public')));
+app.use(static(path.join(__dirname, '/lib')));
 
 
 http.createServer(app.callback()).listen(3000);

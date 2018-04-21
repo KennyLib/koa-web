@@ -1,0 +1,8 @@
+<h1>Hello World!</h1>
+<a href="/logout">logout</a>
+<% if(usersls!==null){ %>
+    <%= usersls.length %>
+    <% usersls.forEach(function(users){ %>
+        <li><%= users.account %> | <%= users.password %></li>
+    <% }) %>
+<% } %>
