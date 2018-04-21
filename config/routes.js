@@ -16,6 +16,11 @@ module.exports.routes = [
     },
     {
         type: 'get',
+        name: '/logout',
+        action: require('../controller/account').logout
+    },
+    {
+        type: 'get',
         name: '/about',
         action: require('../controller/about')
     }

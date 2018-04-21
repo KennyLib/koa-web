@@ -45,6 +45,7 @@ app.use(passport.session())
  */
 // _routes(router);
 app.use(router.routes()).use(router.allowedMethods());
+
 /**
  * 静态文件访问
  */

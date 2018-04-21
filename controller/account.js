@@ -13,7 +13,11 @@ const _ = {
     login_post: passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/login'
-    })
+    }),
+    logout: async (ctx) => {
+        ctx.logout()
+        ctx.redirect('/login')
+    }
 };
 
 module.exports = _;
