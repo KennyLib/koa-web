@@ -6,8 +6,8 @@ const _home = async (ctx, next) => {
         title: 'koa-web'
     };
 
-    const viewobj = {};
-    
+    const viewobj = {data:{ layout: true} };
+
     viewobj.usersls = await account.Account.findAll()
 
     await next();

@@ -5,7 +5,7 @@ const _about = async (ctx, next) => {
     };
 
     await ctx.render('about', {
-        user: 'Coder'
+        data:{ layout: true}
     });
 };
 

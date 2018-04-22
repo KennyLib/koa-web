@@ -6,6 +6,16 @@ module.exports.routes = [
     },
     {
         type: 'get',
+        name: '/register',
+        action: require('../controller/account').register_get
+    },
+    {
+        type: 'post',
+        name: '/register',
+        action: require('../controller/account').register_post
+    },
+    {
+        type: 'get',
         name: '/login',
         action: require('../controller/account').login_get
     },

@@ -20,7 +20,7 @@ const Account = sequelize().define('account', {
 // force: true 如果表已经存在，将会丢弃表
 Account.sync({ force: true }).then(() => {
     // 表已创建
-    return Account.create({
+    Account.create({
         account: 'Administrator',
         email: '614044401@qq.com',
         password: 'Xx521314',
